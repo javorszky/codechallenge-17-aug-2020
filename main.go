@@ -20,17 +20,13 @@ func main() {
 // moveZeroes is the solution to the interview question. Takes a slice, returns a slice with zeroes at the end.
 func moveZeroes(nums []int) []int {
 	moved := make([]int, 0, len(nums))
-	zeroes := 0
 	for _, v := range nums {
 		if v == 0 {
-			zeroes++
 			continue
 		}
 		moved = append(moved, v)
 	}
-	for i := 0; i < zeroes; i++ {
-		moved = append(moved, 0)
-	}
+	moved = append(moved, make([]int, len(nums) - len(moved), len(nums) - len(moved))...)
 
 	return moved
 }
